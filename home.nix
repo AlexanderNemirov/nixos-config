@@ -34,10 +34,15 @@
       tdesktop
       bitwarden
       obsidian
+
+      #browsers
+      librewolf
+      mullvad-browser
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = true;
       })
+
     ];
   };
 

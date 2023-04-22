@@ -31,10 +31,22 @@
   # networking.proxy.noProxy = "127.0.0.1.localhost.internal.domain";
 
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "de_DE.UTF-8/UTF-8"
+      "ru_RU.UTF-8/UTF-8"
+    ];
+    extraLocaleSettings = {
+      LC_TIME = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+    };
+  };
   console = {
     font = "Lat2-Terminus16";
-   # keyMap = "us";
+    keyMap = "us";
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
@@ -45,6 +57,7 @@
     xserver = {
       enable = true;
       autorun = true;
+
       xautolock.enable = false;
       windowManager.i3.enable = true;
       desktopManager = {
@@ -59,15 +72,12 @@
         lightdm.enable = true;
         defaultSession = "xfce+i3";
       };
+
+      # Configure keymap in X11
+      layout = "us,ru";
+      xkbOptions = "grp:win_space_toggle, compose:ralt";
     };
   };
-      
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -121,7 +131,7 @@
     firewall = {
       allowedUDPPorts = [ 51820 ];
     };
-    wg-quick.interfaces = import ./wireguard.nix;
+    # wg-quick.interfaces = import ./wireguard.nix;
     hostName = "nixos"; # Define your hostname.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   };
