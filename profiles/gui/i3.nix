@@ -47,6 +47,7 @@ in
               childBorder = "#B58900";
               text = "#B58900";
             };
+          };
         }
       ];
 
