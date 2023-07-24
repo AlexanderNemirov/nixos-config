@@ -44,7 +44,7 @@ in
             };
             bindingMode = {
               background = "#000000";
-              childBorder = "#B58900";
+              border = "#B58900";
               text = "#B58900";
             };
           };
@@ -69,7 +69,9 @@ in
         };
         placeholder = {
           background = "#000000";
+          border = "#000000";
           childBorder = "#000000";
+          indicator = "#000000";
           text = "#FFFFFF";
         };
         unfocused = {
