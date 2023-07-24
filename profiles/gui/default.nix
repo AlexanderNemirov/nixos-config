@@ -1,6 +1,6 @@
 [
   ./autorandr.nix
-  ./i3.nix
+  ./sway.nix
   ./i3status-rust.nix
   ./rofi.nix
 ]

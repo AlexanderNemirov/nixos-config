@@ -25,6 +25,24 @@
     };
   };
 
+  # Wayland configuration
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
+  hardware = {
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
+  };
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -53,39 +71,50 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable the X11 windowing system.
-  services = {
-    xserver = {
-      enable = true;
-      autorun = true;
+  #services = {
+  #  xserver = {
+  #    enable = true;
+  #    autorun = true;
 
-      xautolock.enable = false;
-      windowManager.i3.enable = true;
-      desktopManager = {
-        xterm.enable = false;
-    	  xfce = {
-      	  enable = true;
-      	  noDesktop = true;
-      	  enableXfwm = false;
-        };
-      };
-      displayManager = {
-        lightdm.enable = true;
-        defaultSession = "xfce+i3";
-      };
+  #    xautolock.enable = false;
+  #    windowManager.i3.enable = true;
+  #    desktopManager = {
+  #      xterm.enable = false;
+  #  	  xfce = {
+  #    	  enable = true;
+  #    	  noDesktop = true;
+  #    	  enableXfwm = false;
+  #      };
+  #    };
+  #    displayManager = {
+  #      lightdm.enable = true;
+  #      defaultSession = "xfce+i3";
+  #    };
 
       # Configure keymap in X11
-      layout = "us,ru";
-      xkbOptions = "grp:win_space_toggle, compose:ralt";
-    };
-  };
+  #    layout = "us,ru";
+  #    xkbOptions = "grp:win_space_toggle, compose:ralt";
+  #  };
+  #};
+
+  # Enable Polkit to setup Wayland in home manager
+  security.polkit.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
   sound.mediaKeys.enable = true;
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;

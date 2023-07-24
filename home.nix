@@ -25,7 +25,9 @@
 
       #gui
       autorandr
-      rofi
+      rofi-wayland
+      mako
+      libnotify
 
       #network
       wireguard-tools
@@ -46,9 +48,12 @@
 
   programs = {
     home-manager.enable = true;
-
   };
 
-  xdg.enable = true;
+  # xdg.enable = true;
+  # Wayland
+  services = {
+    mako.enable = true;
+  }
 
 }
