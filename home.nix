@@ -54,6 +54,6 @@
   # Wayland
   services = {
     mako.enable = true;
-  }
+  };
 
 }
