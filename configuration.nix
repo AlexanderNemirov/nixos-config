@@ -33,10 +33,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-  };
 
   hardware = {
     opengl.enable = true;
@@ -99,13 +95,13 @@
 
   # Enable Polkit to setup Wayland in home manager
   security.polkit.enable = true;
+  security.rtkit.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -129,34 +125,12 @@
        "wheel"
        "audio"
        "sound"
+       "sway"
        "video"
        "networkmanager"
        "input"
        "tty"
      ];     
-  };
-
-
-  fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [                # Fonts
-      carlito                                 # NixOS
-      vegur                                   # NixOS
-      source-code-pro
-      jetbrains-mono
-      font-awesome                            # Icons
-      corefonts                               # MS
-      (nerdfonts.override {                   # Nerdfont Icons override
-        fonts = [
-          "FiraCode"
-        ];
-      })
-    ];
-    fontconfig = {
-      defaultFonts.monospace = [
-        "JetBrains Mono"
-      ];
-    };
   };
 
   # List packages installed in system profile. To search, run:

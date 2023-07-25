@@ -3,7 +3,7 @@
 {
   imports = 
     (import ./profiles/cli) ++
-    (import ./profiles/gui);
+    (import ./profiles/workspace);
 
 
   home = {
@@ -24,7 +24,6 @@
       wget
 
       #gui
-      autorandr
       rofi-wayland
       mako
       libnotify
