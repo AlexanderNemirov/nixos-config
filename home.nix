@@ -15,19 +15,22 @@
       # cli tools
       git
       ranger
-      alacritty
       btop
-      helix
       curl
       zip
       unzip
       unrar
       wget
 
-      # desktop environment
-      rofi-wayland
+      # desktop-environment
+      wofi 
       mako
       libnotify
+      nm-applet
+
+      # workspace
+      alacritty
+      helix
 
       # network
       wireguard-tools
@@ -48,12 +51,6 @@
 
   programs = {
     home-manager.enable = true;
-  };
-
-  # xdg.enable = true;
-  # Wayland
-  services = {
-    mako.enable = true;
   };
 
 }
