@@ -25,7 +25,7 @@ in
 
       terminal = "alacritty";
 
-      menu = "${pkgs.rofi-wayland}/bin/rofi-wayland -show run";
+      menu = "${pkgs.wofi}/bin/wofi --show run";
 
       startup = [
       ];
@@ -35,7 +35,7 @@ in
         "3" = [{ class = "telegram"; }];
       };
 
-      keybindings = import ./i3-keybindings.nix {
+      keybindings = import ./sway-keybindings.nix {
         inherit mod pkgs;
       };
 

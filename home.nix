@@ -12,31 +12,32 @@
     stateVersion = "22.05";
 
     packages = with pkgs; [
-      #cli
+      # cli tools
       git
       ranger
       alacritty
-      htop
+      btop
       helix
       curl
-      unzip
       zip
+      unzip
+      unrar
       wget
 
-      #gui
+      # desktop environment
       rofi-wayland
       mako
       libnotify
 
-      #network
+      # network
       wireguard-tools
 
-      #apps
+      # apps
       tdesktop
       bitwarden
       obsidian
 
-      #browsers
+      # browsers
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = true;

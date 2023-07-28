@@ -1,5 +1,4 @@
 [
-  ./fonts.nix
-  ./i3status-rust.nix
+  ./desktop-environment/default.nix
   ./sway.nix
 ]
